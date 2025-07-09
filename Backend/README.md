@@ -141,3 +141,40 @@ Returned if no user is found with the given email.
 ```json
 { "message": "Invalid email or password" }
 ```
+
+## User Profile
+
+### `GET /users/profile`
+
+Protected endpoint to retrieve the authenticated user’s profile. Requires a valid JWT in `Authorization: Bearer <token>` header or `token` cookie.
+
+#### `200 OK`
+```json
+{
+  "_id": "60f5a9b3e4b3f8a3c4b5e6d7",
+  "fullname": { "firstname": "John", "lastname": "Doe" },
+  "email": "john.doe@example.com",
+  "socketId": null
+}
+```
+
+#### `401 Unauthorized`
+```json
+{ "message": "Access denied" }
+```
+
+## User Logout
+
+### `GET /users/logout`
+
+Protected endpoint to log out the authenticated user by clearing cookie and blacklisting the JWT.
+
+#### `200 OK`
+```json
+{ "message": "User logged out successfully" }
+```
+
+#### `401 Unauthorized`
+```json
+{ "message": "Access denied" }
+```
