@@ -178,3 +178,74 @@ Protected endpoint to log out the authenticated user by clearing cookie and blac
 ```json
 { "message": "Access denied" }
 ```
+
+## Captain Registration
+
+### `POST /captains/register`
+
+This endpoint allows a new captain to register in the system.
+
+### Request Body
+
+```json
+{
+  "fullname": {
+    "firstname": "Jane",
+    "lastname": "Smith"
+  },
+  "email": "jane.smith@example.com",
+  "password": "password123",
+  "vehicle": {
+    "color": "Red",
+    "plate": "ABC123",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
+```
+
+**Field Validation:**
+
+*   `fullname.firstname`: Must be at least 3 characters long.
+*   `email`: Must be a valid email address.
+*   `password`: Must be at least 6 characters long.
+*   `vehicle.color`: Must be at least 3 characters long.
+*   `vehicle.plate`: Must be at least 3 characters long.
+*   `vehicle.capacity`: Must be at least 1.
+*   `vehicle.vehicleType`: Must be one of: `car`, `motorcycle`, `auto`.
+
+### Responses
+
+#### `201 Created`
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "message": "Captain registered successfully",
+  "captain": {
+    "fullname": { "firstname": "Jane", "lastname": "Smith" },
+    "email": "jane.smith@example.com",
+    "vehicle": { "color": "Red", "plate": "ABC123", "capacity": 4, "vehicleType": "car" },
+    "_id": "60f5abcd1234efgh5678ijkl"
+  },
+  "token": "<jwt-token>"
+}
+```
+
+#### `400 Bad Request`
+
+Returned on validation failure or if email already exists.
+
+```json
+{ "message": "Captain with this email already exists" }
+```
+
+#### `500 Internal Server Error`
+
+Returned on server error.
+
+```json
+{ "message": "An unexpected error occurred" }
+```
