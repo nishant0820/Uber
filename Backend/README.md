@@ -249,3 +249,97 @@ Returned on server error.
 ```json
 { "message": "An unexpected error occurred" }
 ```
+
+## Captain Login
+
+### `POST /captains/login`
+
+This endpoint authenticates an existing captain and returns a JSON Web Token (JWT).
+
+### Request Body
+
+```json
+{
+  "email": "jane.smith@example.com",
+  "password": "password123"
+}
+```
+
+#### `200 OK`
+
+Returned on successful login.
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "message": "Captain logged in successfully",
+  "captain": {
+    "fullname": { "firstname": "Jane", "lastname": "Smith" },
+    "email": "jane.smith@example.com",
+    "_id": "60f5abcd1234efgh5678ijkl"
+  },
+  "token": "<jwt-token>"
+}
+```
+
+#### `401 Unauthorized`
+
+Returned if the credentials are invalid.
+
+```json
+{ "message": "Invalid email or password" }
+```
+
+## Captain Profile
+
+### `GET /captains/profile`
+
+Protected endpoint to retrieve the authenticated captain’s profile. Requires a valid JWT in `Authorization: Bearer <token>` header or `token` cookie.
+
+#### `200 OK`
+
+Returned with the captain’s profile data.
+
+```json
+{
+  "message": "Captain profile fetched successfully",
+  "captain": {
+    "_id": "60f5abcd1234efgh5678ijkl",
+    "fullname": { "firstname": "Jane", "lastname": "Smith" },
+    "email": "jane.smith@example.com",
+    "vehicle": { "color": "Red", "plate": "ABC123", "capacity": 4, "vehicleType": "car" }
+  }
+}
+```
+
+#### `401 Unauthorized`
+
+Returned if the request is not authenticated.
+
+```json
+{ "message": "Access denied" }
+```
+
+## Captain Logout
+
+### `GET /captains/logout`
+
+Protected endpoint to log out the authenticated captain by clearing cookie and blacklisting the JWT.
+
+#### `200 OK`
+
+Returned on successful logout.
+
+```json
+{ "message": "Captain logged out successfully" }
+```
+
+#### `401 Unauthorized`
+
+Returned if the request is not authenticated.
+
+```json
+{ "message": "Access denied" }
+```
