@@ -11,10 +11,10 @@ const Home = () => {
           alt="Uber logo"
         />
         <div className="bg-white pb-7 py-4 px-4">
-          <h2 className="text-3xl font-bold">Get Started with Uber</h2>
+          <h2 className="text-[30px] font-bold">Get Started with Uber</h2>
           <Link
             to="/login"
-            className="flex items-center justify-center w-full bg-black text-white py-3 rounded mt-5"
+            className="flex items-center justify-center w-full bg-black text-white py-3 rounded-lg mt-5"
           >
             Continue
           </Link>
