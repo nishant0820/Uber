@@ -5,8 +5,8 @@
 Navigate to `/login` to sign in as a user. The form requires:
 ```json
 {
-  "email": "user@example.com", // example: user@example.com
-  "password": "password123" // example: password123
+  "email": "user@example.com",
+  "password": "password123"
 }
 ```
 
@@ -15,8 +15,8 @@ Navigate to `/login` to sign in as a user. The form requires:
 Navigate to `/captain-login` to sign in as a captain. The form requires:
 ```json
 {
-  "email": "captain@example.com", // example: captain@example.com
-  "password": "password123" // example: password123
+  "email": "captain@example.com",
+  "password": "password123"
 }
 ```
 
