@@ -120,7 +120,7 @@ const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captains/reg
     color: "Red",
     plate: "ABC123",
     capacity: 4,
-    vehicleType: "car" // "car" | "auto" | "moto"
+    vehicleType: "car"
   }
 });
 
@@ -341,3 +341,136 @@ try {
   }
 }
 ```
+
+## Frontend Components
+
+### Home Page
+
+The main page (`Home.jsx`) features:
+- Location search inputs
+- Animated panels using GSAP
+- Map display
+- State management for:
+  - Pickup location
+  - Destination
+  - Panel visibility
+  - Vehicle selection
+  - Ride confirmation
+
+```jsx
+// Component Structure
+<div className="h-screen relative">
+  <Logo />
+  <MapView />
+  <SearchPanel>
+    <LocationInputs />
+    <LocationSearchPanel />
+  </SearchPanel>
+  <VehiclePanel />
+  <ConfirmRidePanel />
+  <LookingForDriverPanel />
+  <WaitingForDriverPanel />
+</div>
+```
+
+### Location Search Panel
+
+`LocationSearchPanel.jsx` provides:
+- List of suggested locations
+- Click handling for location selection
+- Integration with vehicle selection panel
+
+```jsx
+// Example Location Data
+const locations = [
+  "F-61/2A, Near Reliance Fresh",
+  "F-62/2A, Near Reliance Fresh",
+  // ...more locations
+];
+```
+
+### Vehicle Panel
+
+`VehiclePanel.jsx` displays available ride options:
+- UberGo (4 seater)
+- Moto (1 seater)
+- UberAuto (3 seater)
+
+Each vehicle option shows:
+- Vehicle image
+- Capacity
+- Estimated time of arrival
+- Description
+- Price estimate
+
+### Confirm Ride Panel
+
+`ConfirmRide.jsx` shows ride details:
+- Pickup location
+- Destination
+- Vehicle type
+- Fare estimate
+- Payment method
+- Confirmation button
+
+```jsx
+// Panel Structure
+<div>
+  <RideDetails>
+    <PickupLocation />
+    <DestinationLocation />
+    <FareDetails />
+  </RideDetails>
+  <ConfirmButton />
+</div>
+```
+
+### Looking For Driver Panel
+
+`LookingForDriver.jsx` displays:
+- Loading state while finding a driver
+- Selected vehicle type
+- Journey details:
+  - Pickup location
+  - Destination
+  - Fare amount
+  - Payment method
+
+### Component State Flow
+
+1. User enters locations in Home page
+2. Location Search Panel shows suggestions
+3. User selects location → Vehicle Panel opens
+4. User selects vehicle → Confirm Ride Panel opens
+5. User confirms ride → Looking For Driver Panel shows
+6. Driver accepts → Waiting For Driver Panel appears
+
+### Animation and Transitions
+
+The app uses GSAP for smooth animations:
+```javascript
+useGSAP(() => {
+  // Panel animations
+  gsap.to(panelRef.current, {
+    height: panelOpen ? "70%" : "0%",
+    padding: panelOpen ? 24 : 0,
+    opacity: panelOpen ? 1 : 0
+  });
+});
+```
+
+### Panel Navigation
+
+Each panel includes:
+- Close button (top)
+- Back navigation
+- Clear state management
+- Smooth transitions between states
+
+### Styling
+
+The app uses Tailwind CSS for styling:
+- Responsive design
+- Custom animations
+- Consistent spacing
+- Mobile-first approach
