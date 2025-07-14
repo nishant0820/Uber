@@ -436,6 +436,70 @@ Each vehicle option shows:
   - Fare amount
   - Payment method
 
+### Waiting For Driver Panel
+
+`WaitingForDriver.jsx` displays ride details once a driver has accepted:
+
+```jsx
+// Component Structure
+<div>
+  <DriverInfo>
+    <DriverImage />
+    <DriverDetails>
+      <Name>Nishant</Name>
+      <VehicleNumber>DL5CP0321</VehicleNumber>
+      <VehicleDescription>White Suzuki-Alto</VehicleDescription>
+    </DriverDetails>
+  </DriverInfo>
+  
+  <JourneyDetails>
+    <PickupLocation>
+      <Icon className="ri-map-pin-2-fill" />
+      <Address>
+        <Title>562/11-A</Title>
+        <Description>Bhajanpura, New Delhi</Description>
+      </Address>
+    </PickupLocation>
+    
+    <DestinationLocation>
+      <Icon className="ri-map-pin-user-fill" />
+      <Address>
+        <Title>562/11-A</Title>
+        <Description>Bhajanpura, New Delhi</Description>
+      </Address>
+    </DestinationLocation>
+    
+    <PaymentInfo>
+      <Icon className="ri-currency-line" />
+      <Details>
+        <Amount>Rs. 193.50</Amount>
+        <Method>Cash</Method>
+      </Details>
+    </PaymentInfo>
+  </JourneyDetails>
+</div>
+```
+
+Features:
+- Driver information display:
+  - Driver's name
+  - Vehicle number
+  - Vehicle description (color and model)
+- Journey details:
+  - Pickup location with address
+  - Destination location with address
+  - Fare amount and payment method
+- Closeable panel interface
+- Real-time status updates
+
+Styling:
+- Clean, organized layout
+- Clear hierarchy of information
+- Prominent driver details
+- Easy-to-read journey information
+- Consistent icon usage for location and payment
+- Mobile-optimized design
+
 ### Component State Flow
 
 1. User enters locations in Home page
