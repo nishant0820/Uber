@@ -500,6 +500,93 @@ Styling:
 - Consistent icon usage for location and payment
 - Mobile-optimized design
 
+### Riding Page
+
+`Riding.jsx` provides real-time ride tracking and payment interface:
+
+```jsx
+// Component Structure
+<div className="h-screen">
+  <HomeButton /> {/* Quick navigation back to home */}
+  
+  <MapSection>
+    {/* Live tracking map with animated location marker */}
+    <LiveTrackingMap />
+  </MapSection>
+  
+  <RideDetailsSection>
+    <DriverInfo>
+      <DriverImage />
+      <DriverDetails>
+        <Name>Nishant</Name>
+        <VehicleNumber>DL5CP0321</VehicleNumber>
+        <VehicleDescription>White Suzuki-Alto</VehicleDescription>
+      </DriverDetails>
+    </DriverInfo>
+    
+    <JourneyDetails>
+      <DestinationInfo>
+        <Icon className="ri-map-pin-user-fill" />
+        <Address>
+          <Title>562/11-A</Title>
+          <Description>Bhajanpura, New Delhi</Description>
+        </Address>
+      </DestinationInfo>
+      
+      <PaymentInfo>
+        <Icon className="ri-currency-line" />
+        <Details>
+          <Amount>Rs. 193.50</Amount>
+          <Method>Cash</Method>
+        </Details>
+      </PaymentInfo>
+    </JourneyDetails>
+    
+    <PaymentButton>Make a Payment</PaymentButton>
+  </RideDetailsSection>
+</div>
+```
+
+Features:
+- Live Tracking:
+  - Real-time map visualization
+  - Animated location marker
+  - Dynamic route display
+  - Estimated time updates
+- Driver Information:
+  - Profile picture
+  - Name and contact details
+  - Vehicle information
+- Journey Details:
+  - Destination address
+  - Trip progress
+  - Fare details
+- Payment Integration:
+  - Fare display
+  - Payment method selection
+  - Payment processing button
+- Navigation:
+  - Quick home button access
+  - Back navigation support
+  - Easy access to driver contact
+
+Styling:
+- Split-screen layout:
+  - Top half: Live tracking map
+  - Bottom half: Ride information
+- Prominent driver details
+- Clear payment information
+- Action-focused payment button
+- Mobile-optimized interface
+
+State Management:
+- Real-time location updates
+- Trip progress tracking
+- Payment status handling
+- Navigation state management
+
+The Riding page serves as the main interface during an active ride, providing real-time tracking and payment functionality in an intuitive, user-friendly layout.
+
 ### Component State Flow
 
 1. User enters locations in Home page
