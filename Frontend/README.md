@@ -625,3 +625,174 @@ The app uses Tailwind CSS for styling:
 - Custom animations
 - Consistent spacing
 - Mobile-first approach
+
+## Captain Components and Panels
+
+#### Captain Details Panel
+
+`CaptainDetails.jsx` displays captain's profile and statistics:
+
+Features:
+- Profile Information:
+  - Profile picture
+  - Captain's name
+  - Total earnings display
+- Statistics Dashboard:
+  - Hours online
+  - Speed metrics
+  - Booking statistics
+- Clean, metric-based layout
+- Real-time earnings update
+
+#### Ride Popup Panel
+
+`RidePopUp.jsx` shows new ride requests:
+
+Features:
+- Ride Request Details:
+  - Customer information with profile picture
+  - Distance to pickup (in KM)
+  - Pickup and drop locations
+  - Fare details
+- Action Buttons:
+  - Accept ride option
+  - Ignore ride option
+- Dismissible panel
+- Clear fare and payment information
+
+#### Confirm Ride Popup
+
+`ConfirmRidePopUp.jsx` handles ride confirmation:
+
+```jsx
+// Component Structure
+<div>
+  <Header>
+    <Title>Confirm Ride</Title>
+    <CloseButton />
+  </Header>
+  
+  <CustomerInfo>
+    <ProfilePicture />
+    <CustomerName />
+    <Distance />
+  </CustomerInfo>
+  
+  <JourneyDetails>
+    <PickupLocation />
+    <DestinationLocation />
+    <FareDetails />
+  </JourneyDetails>
+  
+  <ConfirmationForm>
+    <OTPInput />
+    <ConfirmButton />
+    <CancelButton />
+  </ConfirmationForm>
+</div>
+```
+
+Features:
+- OTP Verification:
+  - Input field for OTP
+  - Form validation
+- Ride Details Display:
+  - Customer information
+  - Location details
+  - Fare breakdown
+- Action Controls:
+  - Confirm button
+  - Cancel option
+- Validation workflow
+
+#### Captain Riding Panel
+
+`CaptainRiding.jsx` provides the captain's ride interface:
+
+Features:
+- Live Navigation:
+  - Real-time map display
+  - Distance updates
+  - Route visualization
+- Ride Controls:
+  - Complete ride button
+  - Distance indicator
+  - Quick logout access
+- GSAP Animations:
+  - Smooth panel transitions
+  - Interactive UI elements
+- Responsive Layout:
+  - Split view design
+  - Accessible controls
+
+#### Finish Ride Panel
+
+`FinishRide.jsx` manages ride completion:
+
+```jsx
+// Component Structure
+<div>
+  <Header>
+    <Title>Finish This Ride</Title>
+    <CloseButton />
+  </Header>
+  
+  <CustomerSummary>
+    <ProfileSection>
+      <CustomerImage />
+      <CustomerName />
+    </ProfileSection>
+    <TripDistance />
+  </CustomerSummary>
+  
+  <JourneyDetails>
+    <PickupLocation />
+    <DestinationLocation />
+    <FareDetails />
+  </JourneyDetails>
+  
+  <FinishButton>Finish Ride</FinishButton>
+</div>
+```
+
+Features:
+- Ride Summary:
+  - Customer details
+  - Journey distance
+  - Route information
+- Payment Details:
+  - Fare amount
+  - Payment method
+- Location Information:
+  - Pickup point
+  - Drop-off point
+- Completion Actions:
+  - Finish ride button
+  - Return to home option
+
+Styling (Common across captain panels):
+- Professional color scheme
+- Clear typography hierarchy
+- Consistent iconography
+- Mobile-optimized layouts
+- Interactive elements
+- Responsive design
+- Status indicators
+- Clear call-to-action buttons
+
+State Management:
+- Panel visibility states
+- Form input handling
+- Navigation state
+- Ride status tracking
+- Animation states
+- User interactions
+
+Navigation Flow:
+1. Captain receives ride request (RidePopUp)
+2. Confirms with OTP (ConfirmRidePopUp)
+3. Starts navigation (CaptainRiding)
+4. Completes ride (FinishRide)
+5. Returns to available state
+
+Each component follows consistent design patterns and integrates with the main application flow while maintaining a professional and user-friendly interface.

@@ -110,7 +110,7 @@ const CaptainSignup = () => {
       <p className='text-center'>Already have an account? <Link to='/captain-login' className='text-blue-600'>Login Here</Link></p>
       </div>
       <div className="">
-        <p className='text-[10px] leading-tight'>This site is protected by reCAPTCHA and the <span className='underline'>Google Privacy Policy</span> and <span className='underline'>Terms of Service</span> apply.</p>
+        <p className='text-[10px] mt-6 leading-tight'>This site is protected by reCAPTCHA and the <span className='underline'>Google Privacy Policy</span> and <span className='underline'>Terms of Service</span> apply.</p>
       </div>
     </div>
   )
