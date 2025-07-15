@@ -343,3 +343,64 @@ Returned if the request is not authenticated.
 ```json
 { "message": "Access denied" }
 ```
+
+## Maps API
+
+### `GET /get-coordinates`
+
+Fetches the coordinates (latitude and longitude) for a given address.
+
+#### Query Parameters
+
+- `address` (string): The address to fetch coordinates for. Must be at least 3 characters long.
+
+#### Middleware
+
+- `authMiddleware.authUser`: Ensures the user is authenticated.
+
+#### Responses
+
+- `200 OK`: Coordinates object containing latitude and longitude.
+- `400 Bad Request`: Validation errors.
+- `404 Not Found`: Coordinates not found.
+
+---
+
+### `GET /get-distance-time`
+
+Fetches the distance and estimated time between an origin and a destination.
+
+#### Query Parameters
+
+- `origin` (string): The starting point. Must be at least 3 characters long.
+- `destination` (string): The destination point. Must be at least 3 characters long.
+
+#### Middleware
+
+- `authMiddleware.authUser`: Ensures the user is authenticated.
+
+#### Responses
+
+- `200 OK`: Distance and time object.
+- `400 Bad Request`: Validation errors.
+- `404 Not Found`: Distance and time not found.
+
+---
+
+### `GET /get-suggestions`
+
+Fetches autocomplete suggestions for a given input query.
+
+#### Query Parameters
+
+- `input` (string): The input query for suggestions. Must be at least 3 characters long.
+
+#### Middleware
+
+- `authMiddleware.authUser`: Ensures the user is authenticated.
+
+#### Responses
+
+- `200 OK`: Array of suggestions.
+- `400 Bad Request`: Validation errors.
+- `404 Not Found`: Suggestions not found.
