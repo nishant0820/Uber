@@ -404,3 +404,75 @@ Fetches autocomplete suggestions for a given input query.
 - `200 OK`: Array of suggestions.
 - `400 Bad Request`: Validation errors.
 - `404 Not Found`: Suggestions not found.
+
+## Ride API
+
+### `POST /create`
+
+Creates a new ride.
+
+#### Request Body
+
+- `pickup` (string): The pickup location. Must be at least 3 characters long.
+- `destination` (string): The destination location. Must be at least 3 characters long.
+- `vehicleType` (string): The type of vehicle for the ride. Must be one of: `auto`, `car`, `moto`.
+
+#### Middleware
+
+- `authMiddleware.authUser`: Ensures the user is authenticated.
+
+#### Responses
+
+- `201 Created`: Ride created successfully.
+- `400 Bad Request`: Validation errors.
+- `500 Internal Server Error`: Server-side error.
+
+---
+
+## Ride Model
+
+The `ride` model represents a ride in the system.
+
+#### Fields
+
+- `user` (ObjectId): Reference to the user who created the ride. Required.
+- `captain` (ObjectId): Reference to the captain assigned to the ride.
+- `pickup` (string): The pickup location. Required.
+- `destination` (string): The destination location. Required.
+- `fare` (number): The fare for the ride. Required.
+- `status` (string): The status of the ride. Enum: `pending`, `accepted`, `ongoing`, `completed`, `cancelled`. Default: `pending`.
+- `duration` (number): The estimated duration of the ride.
+- `distance` (number): The distance of the ride.
+- `paymentId` (string): The payment ID for the ride.
+- `orderId` (string): The order ID for the ride.
+- `signature` (string): The signature for the ride.
+- `otp` (string): The OTP for the ride. Required and not selectable.
+
+---
+
+## OTP Generation and Validation
+
+### OTP Generation
+
+The OTP is generated using a cryptographically secure random number generator.
+
+#### Example
+
+```javascript
+function generateOtp(num) {
+    const otp = crypto.randomInt(Math.pow(10, num - 1), Math.pow(10, num)).toString();
+    return otp;
+}
+```
+
+### OTP Validation
+
+The OTP is validated by comparing the provided OTP with the stored OTP for the ride.
+
+#### Example
+
+```javascript
+function validateOtp(providedOtp, storedOtp) {
+    return providedOtp === storedOtp;
+}
+```
